@@ -82,8 +82,8 @@ void checkPressure(unsigned long currentTs) {
 
     double rawADC = analogRead(PRESSURE_PIN);
     float newPressurePsi = (rawADC - MIN_PRESSURE_ADC) * MAX_PRESSURE_MPA / (MAX_PRESSURE_ADC - MIN_PRESSURE_ADC) * PSI_MPA;
-    if (newPressurePsi < 0 || newPressurePsi > 100) {
-      Serial.println("Failed to read from pressure sensor!");
+    if (newPressurePsi < -2 || newPressurePsi > 100) {
+      Particle.publish("pressure_error", "Failed to read from pressure sensor: " + String(newPressurePsi, 2));
   		return;
   	}
     filterPsi = newPressurePsi;
@@ -94,33 +94,34 @@ void checkDHT(unsigned long currentTs) {
   if (currentTs - lastDHTTs > DHT_DELAY) {
     lastDHTTs = currentTs;
 
+    String dhtError;
     int result = dht->acquireAndWait(1000); // wait up to 1 sec (default indefinitely)
     switch (result) {
       case DHTLIB_OK:
         break;
       case DHTLIB_ERROR_CHECKSUM:
-        Serial.println("Failed to read from DHT sensor: Checksum error");
+        Particle.publish("dht_error", "Checksum error");
         return;
       case DHTLIB_ERROR_ISR_TIMEOUT:
-        Serial.println("Failed to read from DHT sensor: ISR time out error");
+        Particle.publish("dht_error", "ISR time out error");
         return;
       case DHTLIB_ERROR_RESPONSE_TIMEOUT:
-        Serial.println("Failed to read from DHT sensor: Response time out error");
+        Particle.publish("dht_error", "Response time out error");
         return;
       case DHTLIB_ERROR_DATA_TIMEOUT:
-        Serial.println("Failed to read from DHT sensor: Data time out error");
+        Particle.publish("dht_error", "Data time out error");
         return;
       case DHTLIB_ERROR_ACQUIRING:
-        Serial.println("Failed to read from DHT sensor: Acquiring");
+        Particle.publish("dht_error", "Acquiring error");
         return;
       case DHTLIB_ERROR_DELTA:
-        Serial.println("Failed to read from DHT sensor: Delta time to small");
+        Particle.publish("dht_error", "Delta time to small");
         return;
       case DHTLIB_ERROR_NOTSTARTED:
-        Serial.println("Failed to read from DHT sensor: Not started");
+        Particle.publish("dht_error", "Not started");
         return;
       default:
-        Serial.println("Failed to read from DHT sensor: Unknown error");
+        Particle.publish("dht_error", "Unexpected error: " + result);
         return;
     }
 

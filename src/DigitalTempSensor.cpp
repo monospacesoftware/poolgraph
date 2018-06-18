@@ -68,8 +68,7 @@ void DigitalTempSensor::updateTemp(unsigned long currentTs) {
 		lastTempTs = currentTs;
 		//Serial.println(lastTempC);
   } else {
-    Serial.print("WARN: Read bad temp: ");
-    Serial.println(newTempC);
+		Particle.publish("digital_temp_error", "Read bad temp: " + String(newTempC, 2));
   }
 }
 

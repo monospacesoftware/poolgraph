@@ -4,10 +4,10 @@ https://poolgraph.com/
 
 An IoT device for monitoring a swimming pool.
 
-![Image 1](https://raw.githubusercontent.com/poolgraph/collateral/poolgraph-v1-1.jpg)
-![Image 2](https://raw.githubusercontent.com/poolgraph/collateral/poolgraph-v1-2.jpg)
-![Image 3](https://raw.githubusercontent.com/poolgraph/collateral/poolgraph-v1-3.jpg)
-![Image 4](https://raw.githubusercontent.com/poolgraph/collateral/poolgraph-v1-4.jpg)
+![Image 1](https://raw.githubusercontent.com/monospacesoftware/poolgraph/master/collateral/poolgraph-v1-1.jpg)
+![Image 2](https://raw.githubusercontent.com/monospacesoftware/poolgraph/master/collateral/poolgraph-v1-2.jpg)
+![Image 3](https://raw.githubusercontent.com/monospacesoftware/poolgraph/master/collateral/poolgraph-v1-3.jpg)
+![Image 4](https://raw.githubusercontent.com/monospacesoftware/poolgraph/master/collateral/poolgraph-v1-4.jpg)
 
 ## Features
 

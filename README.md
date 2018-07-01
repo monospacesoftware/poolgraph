@@ -72,9 +72,7 @@ The Photon's wifi range isn't great. Adding an antenna really helps pickup a wif
 
 ## Circuit Diagram
 
-TODO
-
-Basically wire the DS18B20 to D0, the DHT22 to D2, and the pressure sensor to A0, along with the required resistors.
+![Image 5](https://raw.githubusercontent.com/monospacesoftware/poolgraph/master/collateral/poolgraph2_bb.png)
 
 ## Particle Setup
 
